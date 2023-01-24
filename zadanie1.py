@@ -1,7 +1,7 @@
-a = 1
-b = 2
-print("a:", a)
-print("b:", b)
+# a = 1
+# b = 2
+# print("a:", a)
+# print("b:", b)
 # a, b = b, a
 #или
 # c = a
