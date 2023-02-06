@@ -2978,7 +2978,22 @@ import re
 # print(re.sub(reg, "!", s, 1))
 
 # reg = r'2[0-9][0-9][0-9]'
+# reg = r'[а-я]'
 # print(re.findall(reg, s))
+
+s1 = "+7 499 456-45-78, +74994564578, 7 (499) 456 45 78, 7 (499) 456-45-78"
+r1 = r'\+?7\ ?\(?\d{3}\)?\ ?\d{3}\-?\ ?\d{2}\-?\ ?\d{2}'
+
+print(re.findall(r1, s1))
+
+
+
+
+
+
+
+
+
 
 
 # 02022023
@@ -3089,15 +3104,15 @@ import re
 # print(sum_list([1, 3, 5, 7, 9]))
 
 
-def to_str(n, base):
-    convert = "0123456789"
-    if n < base:
-        return convert[n]
-    else:
-        return to_str(n // base, base) + convert[n % base]
-
-
-print(to_str(769, 10))
+# def to_str(n, base):
+#     convert = "0123456789"
+#     if n < base:
+#         return convert[n]
+#     else:
+#         return to_str(n // base, base) + convert[n % base]
+#
+#
+# print(to_str(769, 10))
 
 
 
