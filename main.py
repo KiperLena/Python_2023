@@ -2818,7 +2818,289 @@ from random import randint
 # print(*z)
 
 
-print("Hello, world")
+# print('apple' == 'Apple')
+# print('apple' > 'Apple')
+# print(ord('a'))
+# print(ord('A'))
+
+
+# from random import randint
+#
+#
+# SHORTEST = 7
+# LONGEST = 10
+# MIN_ASCII = 33
+# MAX_ASCII = 126
+#
+# def random_password():
+#     random_length = randint(SHORTEST, LONGEST)
+#     res = ''
+#     for i in range(random_length):
+#         random_char = chr(randint(MIN_ASCII, MAX_ASCII))
+#         res += random_char
+#     return res
+#
+#
+# print("Ваш случайный пароль: ", random_password())
+
+
+# print(dir(str))
+
+#s = "hello, WORLD! I am learning Python"
+#print(s.capitalize()) #Перевод первой буквы в верхний регистр, остальные в нижний
+# print(s.lower()) #преобразует все символы в нижний регистр
+# print(s.upper()) #преобразует все символы в верхний регистр
+# print(s.swapcase()) #меняет регистр на противоположный
+#
+# print(s.count('o', 0)) # подсчитывает количество вхождений подстроки в строки (количество заданных символов
+# print(s.lower().count('o', 0, -5))
+#
+# print(s.find("Python"))
+# print(s.find("Python", -3))
+#
+# print(s.index("Python")) #возвращает первый индекс, который соответствует заданной подстроке, если совпадений нет то возвращаеся ошибка ValueError
+# print(s.index("Python1")) #если совпадений нет то возвращаеся ошибка ValueError
+
+
+# s = 'один два'
+# ind = s.find(' ')
+# print(ind)
+# s = s[ind + 1:] + ' ' + s[:ind]
+# print(s)
+
+# s = 'ab12c59p7dq'
+# digits = []
+# for symbol in s:
+#     if '1234567890'.find(symbol) != -1:
+#         digits.append(int(symbol))
+# print(digits)
+
+# s = "hello, WORLD! I am learning Python"
+# print(s.rfind("l"))
+# print(s.rindex("l"))
+# print(s.find("l", 4))
+
+
+# a = "Nearly all web services collect this basic information from users in their server logs. " \
+#     "However, Python Tutor does not collect any personally identifiable information from its users."
+# n = 'H'
+#
+# if a.count(n) == 1:
+#     print(a.find(n))
+# elif a.count(n) >= 2:
+#     print(a.find(n), a.rfind(n))
+
+# s = "I am learning Python, hello, WORLD"
+# ind1 = s.find('h')
+# ind2 = s.rfind('h')
+# res = s[:ind1] + s[ind2+1:]
+# print(res)
+
+
+# s = "hello, WORLD! I am learning Python"
+#
+# print(s.startswith("he"))
+# print(s.endswith("Python"))
+
+# print('abc123'.isalnum()) # строка состоит из букв и цифр
+# print('abc12)3'.isalnum()) # строка состоит из букв и цифр
+# print(''.isalnum()) # строка состоит из букв и цифр
+#
+# print('abc'.isalpha()) #cтрока состоит только из букв в любом регистре
+# print('abc123'.isalpha())
+#
+# print('abc123'.isdigit())
+# print('123'.isdigit())
+
+# print('py'.center(10, "-"))
+# print('py'.center(7, "="))
+
+# print("   py".lstrip()) #удаляет пробелы слева
+# print("   py  ".rstrip()) #удаляет справа
+# print("   py   ".strip()) # удаляет с двух сторон
+
+# print('http://www.python.org'.lstrip('/:pths'))
+# print('py.$$$;'.rstrip(';$.'))
+# print('http://www.python.orgw'.strip('/:pths.orgw'))
+# print('http://www.python.orgw'.lstrip('/:pths').rstrip('.orgw'))
+
+# str1 = "Я изучаю Nython. Мне нравится Nython. Nython очень интересный язык программирования."
+# print(str1.replace("Nython", "Python", 2)) #заменяет вхожжение подстроки в строку
+
+# s = "-"
+# seq = ("a", "b", "c", "e")
+# print(s.join(seq))
+#
+# print("..".join(['1', '99']))
+#
+# print(":".join("Hello")) #объединяет итерируемую последовательность в строку через символ разделителя
+
+# print("Строка разделенная пробелами".split())
+# print("www.python.org.ru".split(".", 2))
+# print('1,2,3'.split(","))
+# print("www.python.org.ru".rsplit(".", 2))
+
+# a = input("->").split()
+# print(a)
+# a = list(map(int, a))
+# print(a)
+
+# s = "В строке заменить пробелы звездочками"
+# s = s.split()
+# print(s)
+# s= "*".join(s)
+# print(s)
+
+# s = input('FIO: ').split()
+# print(s)
+# print(f'{s[0]} {s[1][0]}. {s[2][0]}.')
+
+# Регулярные выражения
+
+import re
+
+#print(dir(re))
+
+#s = "Я ищу совпадения в 2023 году. И я их найду в 2 счёта. 9812"
+
+# reg = r'\.'
+# print(re.findall(reg, s)) #возвращает список, содержащий совпадения с заданным шаблоном
+#
+# print(re.search(reg, s))
+# print(re.search(reg, s).span())
+# print(re.search(reg, s).start())
+# print(re.search(reg, s).end())
+# print(re.search(reg, s).group())
+
+# print(re.match(reg, s))
+
+# print(re.split(reg, s, 1))
+# print(re.sub(reg, "!", s, 1))
+
+# reg = r'2[0-9][0-9][0-9]'
+# print(re.findall(reg, s))
+
+
+# 02022023
+
+# def validate_name(name):
+#     return re.findall(r'^[a-z\d@_-]{6, 18}$', name, re.IGNORECASE)
+#
+#
+# print(validate_name('my-p@ssword'))
+
+
+# Скобки
+
+# s1 = '127.0.0.1'  # 192.168.255.255
+# #reg = r'\d{1,3}.\d{1,3}.\d{1,3}'
+# reg = r'(?:\d{1,3}.){3}\d{1,3}'
+# print(re.findall(reg, s1))
+
+# s1 = "Word2016, PS6, AI5"
+# reg = r'(([A-z]+)(\d+))'
+# print(re.findall(reg, s1)[0][0])
+
+# s1 = "5 + 7*2 -4"
+# reg = r'\s*([+*-])\s*'
+# print(re.split(reg, s1))
+
+# s = '28-08-2021'
+# reg = r'^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(19[0-9]|20[0-9][0-9])$'
+# print(re.findall(reg, s))
+# print(re.search(reg, s))
+
+# s = "Я ищу совпадения в 2023 году. И я их найду в 2 счёта. 9812"
+# reg = r'([0-9]+)\s(\D+)'
+# print(re.findall(reg, s)[0])
+# print(re.search(reg, s).group(1))
+# m = re.search(reg, s)
+# print(m[0])
+# print(m[1])
+# print(m[2])
+
+# text = """
+# Самара
+# Москва
+# Тверь
+# Уфа
+# Казань
+# """
+# count = 0
+#
+#
+# def repl_find(m):
+#     global count
+#     count += 1
+#     return f"<option value='{count}'>{m.group(1)}</option>\n"
+#
+#
+# print(re.sub(r'\s*(\w+)\s*', repl_find, text))
+# print(re.findall(r'\s*(\w+)\s*', text))
+
+
+# s = "<p>Изображения <img src='bg.jpg'> - фон страницы</p>"
+# reg = r"<img\s+[^>]*src=(?P<q>['\"])(.+)(?P=q)>"
+# print(re.findall(reg, s)[0][1])
+
+# (?P<name>) (?Pname)
+
+# s = "Самолет прилетает 10/23/2023. Будем вас рады видеть после 10/24/2023"  # 24.10.2023
+#
+# reg = r"(\d{2})/(\d{2})/(\d{4})"
+# print(re.sub(reg, r"\2.\1.\3", s))
+
+
+# s = "yandex.com and yandex.ru"
+# reg = r'(([a-z0-9\-]{2,}\.)+[a-z]{2,4})'
+# print(re.sub(reg, r"http://\1", s))
+
+# Рекурсия
+
+# def elevator(n):
+#     if n == 0:
+#         print("Вы в подвале")
+#         return
+#     print("->", n)
+#     elevator(n-1)
+#     print(n, end=" ")
+#
+#
+#
+# n1 = int(input("На каком вы этаже: "))
+# elevator(n1)
+
+
+# def sum_list(lst):
+#     res = 0
+#     for i in lst:
+#         res += i
+#     return res
+
+# def sum_list(lst):
+#     if len(lst) == 1:
+#         print(lst, "=> lst[0]: ", lst[0])
+#         return lst[0]
+#     else:
+#         print(lst, "=> lst[0]: ", lst[0])
+#         return lst[0] + sum_list(lst[1:])
+#
+#
+# print(sum_list([1, 3, 5, 7, 9]))
+
+
+def to_str(n, base):
+    convert = "0123456789"
+    if n < base:
+        return convert[n]
+    else:
+        return to_str(n // base, base) + convert[n % base]
+
+
+print(to_str(769, 10))
+
+
+
 
 
 
