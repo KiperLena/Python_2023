@@ -2959,7 +2959,6 @@ from random import randint
 
 import re
 
-
 # print(dir(re))
 
 # s = "Я ищу совпадения в 2023 году. И я их найду в 2 счёта. 98_12. [Hello]"
@@ -3008,12 +3007,6 @@ import re
 # #r1 = r'\w+\s*=\s*\w+\s*[\w.]*'
 # r1 = r'\w+\s*=\[^;]+'
 # print(re.findall(r1, d))
-
-
-
-
-
-
 
 
 # s1 = "+7 499 456-45-78, +74994564578, 7 (499) 456 45 78, 7 (499) 456-45-78"
@@ -3272,7 +3265,6 @@ import re
 from random import randint
 import time
 
-
 # def bubble(array):
 #     for i in range(len(array) -1):
 #         for j in range(len(array) - i - 1):
@@ -3431,7 +3423,7 @@ import time
 #     f.write(index + "\t")
 # f.close()
 
-
+#
 # f = open('text2.txt', 'w')
 # f.write("Замена строки в текстовом файле;\nизменить строку в списке;\nзаписать список в файл;\n")
 # f.close()
@@ -3448,36 +3440,6 @@ import time
 # f = open('text2.txt', 'w')
 # f.writelines(read_f)
 # f.close()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
