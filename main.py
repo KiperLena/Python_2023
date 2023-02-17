@@ -3784,35 +3784,35 @@ import time
 # print(BMW.get_model())
 
 
-class Person:
-    skill = 10
-    name = " "
-    surname = " "
-
-    def __init__(self, name, surname):
-        self.name = name
-        self.surname = surname
-        print(f"Инициализатор {self.name} {self.surname}")
-
-    def __del__(self):
-        print("Удалить экземпляр\n\n")
-    def print_info(self):
-        print("Данные о сотруднике:", self.name, self.surname)
-
-    def add_skill(self, k):
-        self.skill += k
-        print("Квалификация сотрудника:", self.skill, "\n")
-
-
-
-p1 = Person("Viktor", "Reznik")
-p1.print_info()
-p1.add_skill(3)
-del p1
-
-p2 = Person("Anna", "Dolgih")
-p2.print_info()
-p2.add_skill(2)
+# class Person:
+#     skill = 10
+#     name = " "
+#     surname = " "
+#
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#         print(f"Инициализатор {self.name} {self.surname}")
+#
+#     def __del__(self):
+#         print("Удалить экземпляр\n\n")
+#     def print_info(self):
+#         print("Данные о сотруднике:", self.name, self.surname)
+#
+#     def add_skill(self, k):
+#         self.skill += k
+#         print("Квалификация сотрудника:", self.skill, "\n")
+#
+#
+#
+# p1 = Person("Viktor", "Reznik")
+# p1.print_info()
+# p1.add_skill(3)
+# del p1
+#
+# p2 = Person("Anna", "Dolgih")
+# p2.print_info()
+# p2.add_skill(2)
 
 
 
