@@ -1,0 +1,1 @@
+some samle text for Work\w.txt file
