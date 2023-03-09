@@ -31,6 +31,9 @@ class Pair:
     def kv(self):
         return self.__a ** 2 + self.__b ** 2
 
+    def print_info(self):
+        print(f"{self.__a}, {self.__b}", end=', ')
+
 
 class RightTriangle(Pair):
 
@@ -39,20 +42,23 @@ class RightTriangle(Pair):
 
     def hypotenuse(self):
         print("Гипотенуза ABC: ", end="")
-        print(math.sqrt(super().kv()))
+        print(round(math.sqrt(super().kv()), 2))
 
     def area(self):
         print("Площадь ABC: ", end="")
         print(0.5 * (super().mult()))
 
 
-    # def info(self):
-    #     print(f"Прямоугольный треугольник: {super().__init__(a,b)}")
+    def print_info(self):
+        print(f"Прямоугольный треугольник ABC:",  end=' ')
+        super().print_info()
+        print(round(math.sqrt(super().kv()), 2))
+
 
 
 p2 = RightTriangle(5, 8)
 p2.hypotenuse()
-# p2.info()
+p2.print_info()
 p2.area()
 print()
 p2.sum()

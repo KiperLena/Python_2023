@@ -3522,7 +3522,6 @@ import os
 # import os.path
 import time
 
-
 # print(os.getcwd()) #возвращает путь к текущей директории
 # print(os.listdir()) #возвращает список папок и файлов
 # находящихся в текущей директрии
@@ -4061,44 +4060,44 @@ import time
 # print(weight.to_pounds(), "фунтов")
 
 
-class Person:
-    def __init__(self, name, old):
-        self.__name = name
-        self.__old = old
-
-    @property
-    def name(self):
-        return self.__name
-
-    @name.setter
-    def name(self, new_name):
-        self.__name = new_name
-
-    @name.deleter
-    def name(self):
-        del self.__name
-
-    @property
-    def old(self):
-        return self.__old
-    @old.setter
-    def old(self, new_old):
-        self.__old = new_old
-
-    @old.deleter
-    def old(self):
-        del self.__old
-
-
-
-p1 = Person("Irina", 26)
-print(p1.__dict__)
-p1.name = "Igor"
-print(p1.name)
-p1.old = 31
-print(p1.old)
-del p1.name
-print(p1.__dict__)
+# class Person:
+#     def __init__(self, name, old):
+#         self.__name = name
+#         self.__old = old
+#
+#     @property
+#     def name(self):
+#         return self.__name
+#
+#     @name.setter
+#     def name(self, new_name):
+#         self.__name = new_name
+#
+#     @name.deleter
+#     def name(self):
+#         del self.__name
+#
+#     @property
+#     def old(self):
+#         return self.__old
+#     @old.setter
+#     def old(self, new_old):
+#         self.__old = new_old
+#
+#     @old.deleter
+#     def old(self):
+#         del self.__old
+#
+#
+#
+# p1 = Person("Irina", 26)
+# print(p1.__dict__)
+# p1.name = "Igor"
+# print(p1.name)
+# p1.old = 31
+# print(p1.old)
+# del p1.name
+# print(p1.__dict__)
 
 
 # class Point:
@@ -4585,3 +4584,399 @@ print(p1.__dict__)
 # rect.set_cood(Point(11.2, 33), Point(512, 20))
 # rect.draw_rect()
 # print()
+
+# class Rect:
+#     def __init__(self, width, height):
+#         self.width = width
+#         self.height = height
+#
+#     def show_rect(self):
+#         print(f"Прямоугольник:\nШирина: {self.width}\nВысота: {self.height}")
+#
+# class RectFon(Rect):
+#     def __init__(self, width, height, background):
+#         super().__init__(width, height)
+#         self.fon = background
+#
+#     def show_rect(self):
+#         super().show_rect()
+#         print("Фон:", self.fon)
+#
+# class RectBorder(Rect):
+#     def __init__(self, width, height, border):
+#         super().__init__(width, height)
+#         self.border = border
+#
+#     def show_rect(self):
+#         super().show_rect()
+#         print("Рамка:", self.border)
+#
+# shap1 = RectFon(400, 200, "yellow")
+# shap1.show_rect()
+# print()
+# shap2 = RectBorder(200, 100, "1")
+# shap2.show_rect()
+
+# class Vector(list):
+#     def __str__(self):
+#         return " ".join(map(str, self))
+#
+# v = Vector([1, 2, 3])
+# print(v)
+# print(type(v))
+
+# Перегрузка методов
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f"({self.__x}, {self.__y})"
+#
+#     def is_digit(self):
+#         if isinstance(self.__x, (int, float)) and isinstance(self.__y, (int, float)):
+#             return True
+#         return False
+#
+#     def is_int(self):
+#         if isinstance(self.__x, int) and isinstance(self.__y, int):
+#             return True
+#         return False
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str = "red", width: int = 1):
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+#
+#     def set_cood(self, sp, ep):
+#         if sp.is_digit() and ep.is_digit():
+#             self._sp = sp
+#             self._ep = ep
+#         else:
+#             print("Координаты должны быть числами")
+#
+#
+# class Line(Prop):
+#     def draw_line(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#     def set_cood(self, sp, ep=None):
+#         # super().set_cood(sp, ep)
+#         if ep is None:
+#             if sp.is_int():
+#                 self._sp = sp
+#             else:
+#                 print("Координаты должны быть числами")
+#         else:
+#             if sp.is_int() and ep.is_int():
+#                 self._sp = sp
+#                 self._ep = ep
+#             else:
+#                 print("Координаты должны быть числами")
+#
+# line = Line(Point(1, 2), Point(10, 20))
+# line.draw_line()
+# line.set_cood(Point(12, 30), Point(100, 200))
+# line.draw_line()
+# line.set_cood(Point(-10, -20))
+# line.draw_line()
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f"({self.__x}, {self.__y})"
+#
+#     def is_digit(self):
+#         if isinstance(self.__x, (int, float)) and isinstance(self.__y, (int, float)):
+#             return True
+#         return False
+#
+#     def is_int(self):
+#         if isinstance(self.__x, int) and isinstance(self.__y, int):
+#             return True
+#         return False
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str = "red", width: int = 1):
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+#
+#     def set_cood(self, sp, ep):
+#         if sp.is_digit() and ep.is_digit():
+#             self._sp = sp
+#             self._ep = ep
+#         else:
+#             print("Координаты должны быть числами")
+#
+#     def draw(self):
+#         raise NotImplementedError("В дочернем классе должен быть определен метод draw()")
+#
+#
+# class Line(Prop):
+#     def draw(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#
+# class Rect(Prop):
+#     def draw(self):
+#         print(f"Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+# class Ellipce(Prop):
+#     pass
+#     # def draw(self):
+#     #     print(f"Рисование эллипса: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+# figs = list()
+# figs.append(Line(Point(0, 0), Point(10, 10)))
+# figs.append(Line(Point(10, 10), Point(20, 10)))
+# figs.append(Rect(Point(50, 50), Point(100, 100)))
+# figs.append(Ellipce(Point(-10, -10), Point(10, 10)))
+#
+# for f in figs:
+#     f.draw()
+
+
+# Абстрактный метод
+# Абстрактный класс
+
+from abc import ABC, abstractmethod
+
+
+# class Chess(ABC):
+#     def draw(self):
+#         print("Нарисовал шахматную фигуру")
+#
+#     @abstractmethod
+#     def move(self):
+#         print("Метод move() в базовом классе")
+# class Queen(Chess):
+#     def move(self):
+#         super().move()
+#         print("Ферзь перемещене на е2е4")
+#
+#
+# q = Queen()
+# q.move()
+# q.draw()
+
+# from math import pi
+# class Table:
+#     def __init__(self, width=None, length=None, radius=None):
+#         if radius is None:
+#             if length is None:
+#                 self._width = self._length = width
+#             else:
+#                 self._width = width
+#                 self._length = length
+#         else:
+#             self._radius = radius
+#     def calc_area(self):
+#         raise NotImplementedError("В дочернем классе должен быть определен метод calc_area()")
+#
+# class SqTable(Table):
+#     def calc_area(self):
+#         return self._width * self._length
+#
+# class RoundTable(Table):
+#     def calc_area(self):
+#         return round(pi*self._radius**2, 2)
+#
+# t = SqTable(20, 10)
+# print(t.__dict__)
+# print(t.calc_area())
+# print()
+# t2 = SqTable(20)
+# print(t2.__dict__)
+# print(t2.calc_area())
+# print()
+# t1 = RoundTable(radius=20)
+# print(t1.__dict__)
+# print(t1.calc_area())
+
+
+# from abc import abstractmethod
+#
+# class Currency(ABC):
+#     def __init__(self, value):
+#         self.value = value
+#
+#     @abstractmethod
+#     def convert_to_rub(self):
+#         pass
+#     def print_value(self):
+#         print(self.value, end=' ')
+#
+# class Dollar(Currency):
+#     rate_to_rub = 74.16
+#     suffix = "USD"
+#     def convert_to_rub(self):
+#         return self.value * Dollar.rate_to_rub
+#
+#     def print_value(self):
+#         super().print_value()
+#         print(Dollar.suffix, end=' ')
+#
+# class Euro(Currency):
+#     rate_to_rub = 90.14
+#     suffix = "EUR"
+#     def convert_to_rub(self):
+#         return self.value * Euro.rate_to_rub
+#
+#     def print_value(self):
+#         super().print_value()
+#         print(Euro.suffix, end=' ')
+#
+#
+#
+# d = [Dollar(5), Dollar(10), Dollar(50), Dollar(100)]
+# e = [Euro(5), Euro(10), Euro(50), Euro(100)]
+# print("*" * 50)
+# for elem in d:
+#     elem.print_value()
+#     print(f"= {elem.convert_to_rub():.2f} RUB")
+# print("*" * 50)
+# for elem in e:
+#     elem.print_value()
+#     print(f"= {elem.convert_to_rub():.2f} RUB")
+
+
+# Интерфейсы
+
+# from abc import abstractmethod
+#
+# class Father(ABC):
+#     @abstractmethod
+#     def display1(self):
+#         pass
+#     @abstractmethod
+#     def display2(self):
+#         pass
+#
+# class Child(Father):
+#     def display1(self):
+#         print("Child")
+# class GrandChild(Child):
+#     def display2(self):
+#         print("GrandChild")
+#
+#
+# gc = GrandChild()
+# gc.display2()
+# gc.display1()
+
+# Вложенные классы
+
+# def outer():
+#     a = 5
+#
+#     def inner():
+#         nonlocal b
+#         b = 2
+#         print("a=", a)
+#     inner()
+#     print("b = ", b)
+#
+#
+# print(outer())
+
+
+# class MyOuter:
+#     age = 18
+#
+#     def __init__(self, name):
+#         self.name = name
+#
+#     @classmethod
+#     def outer_class_method(cls):
+#         print("Метод внешнего класса")
+#
+#     def out_obj_method(self):
+#         print("Обычный метод")
+#
+#     class MyInner:
+#         def __init__(self, inner_name, obj):
+#             self.inner_name = inner_name
+#             self.obj = obj
+#
+#         def inner_method(self):
+#             print("Метод внутреннего класса", MyOuter.age, self.obj.name)
+#             MyOuter.outer_class_method()
+#             self.obj.out_obj_method()
+#
+#
+#
+# out = MyOuter('Внешний')
+# inner = out.MyInner('внутренний', out)
+# print(out.name)
+# print(inner.inner_name)
+# inner.inner_method()
+
+
+# class Color:
+#     def __init__(self):
+#         self.name = "Green"
+#         self.lg = self.LighrGreen()
+#
+#     def show(self):
+#         print("Name: ", self.name)
+#
+#     class LighrGreen:
+#         def __init__(self):
+#             self.name = "Light Green"
+#         def display(self):
+#             print("name:", self.name)
+#
+#
+# outer = Color()
+# outer.show()
+# g = outer.lg
+# g.display()
+# print(g.name)
+
+# class Intern:
+#     def __init__(self):
+#         self.name = "Intern"
+#
+#     def display(self):
+#         print("Name:", self.name)
+# class Employee:
+#     def __init__(self):
+#         self.name = "Employee"
+#         self.intern = Intern()
+#         self.head = self.Head()
+#     def show(self):
+#         print("Name:", self.name)
+#
+#
+#     class Head:
+#         def __init__(self):
+#             self.name = "Head"
+#
+#         def display(self):
+#             print("Name:", self.name)
+#
+#
+# outer = Employee()
+# outer.show()
+# print()
+# d1 = outer.intern
+# d2 = outer.head
+# d1.display()
+# d2.display()
+
+
+
+
+
+
+
+
