@@ -67,6 +67,7 @@ print()
 p2.x = 6.5
 p2.y = 11.04
 p2.hypotenuse()
+p2.print_info()
 p2.x = 10
 p2.y = 20
 p2.hypotenuse()
