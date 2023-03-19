@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import math
 
 
 class Shape(ABC):
@@ -87,7 +88,8 @@ class Triangle(Shape):
         return self.a + self.b + self.c
 
     def calc_square(self):
-        return (self.a + self.b + self.c) * 0.5
+        h = math.sqrt(self.b ** 2 - ((0.5 * self.a) ** 2))
+        return round(0.5 * h * self.a, 2)
 
     def info(self):
         s = self.calc_square()
