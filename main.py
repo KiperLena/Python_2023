@@ -5568,13 +5568,19 @@ from abc import ABC, abstractmethod
 
 
 # Дескрипторы
-
+# его магические методы:
+# __get__()
+# __set__()
+# __delete__()
+# __set_name__()
 # class String:
 #     def __init__(self, value):
 #         if value:
 #             self.set(value)
 #
 #     def set(self, value):
+#         if not isinstance(value, str):
+#             raise TypeError(f"{value} должно быть строкой")
 #         self.__value = value
 #
 #     def get(self):
@@ -5583,31 +5589,169 @@ from abc import ABC, abstractmethod
 #     def __init__(self, name, surname):
 #         self.name = String(name)
 #         self.surname = String(surname)
-
-    # @property
-    # def name(self):
-    #     return self.__name
-    #
-    # @name.setter
-    # def name(self, value):
-    #     self.__name = valuec
-    #
-    # @property
-    # def surname(self):
-    #     return self.__surname
-    #
-    # @surname.setter
-    # def surname(self, value):
-    #     self.__surname = value
-
+#
+#     # @property
+#     # def name(self):
+#     #     return self.__name
+#     #
+#     # @name.setter
+#     # def name(self, value):
+#     #     self.__name = value
+#     #
+#     # @property
+#     # def surname(self):
+#     #     return self.__surname
+#     #
+#     # @surname.setter
+#     # def surname(self, value):
+#     #     self.__surname = value
+#
 # p = Person("Игорь", "Петров")
 # p.name.set("Сергей")
 # print(p.name.get())
+
+
+
+# class ValidString:
+#     def __set_name__(self, owner, name):
+#         # print(owner)
+#         self.__name = name
 #
+#     def __get__(self, instance, owner):
+#         # print("__get__")
+#         # print(owner)
+#         return instance.__dict__[self.__name]
+#
+#     def __set__(self, instance, value):
+#         if not isinstance(value, str):
+#             raise ValueError(f"{self.__name} должно быть строкой")
+#         instance.__dict__[self.__name] = value
+#
+# class Person:
+#     name = ValidString()
+#     surname = ValidString()
+#
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#
+#
+# p = Person("Игорь", "Петров")
+# p.surname = "Иванов"
+# print(p.name)
 # print(p.__dict__)
 
 
- x
+# class NonNegative:
+#     def __set_name__(self, owner, name):
+#         self.name = name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.name]
+#
+#     def __set__(self, instance, value):
+#         if value < 0:
+#             raise ValueError("Значение должно быть положителным")
+#         instance.__dict__[self.name] = value
+# class Order:
+#     price = NonNegative()
+#     quantity = NonNegative()
+#     def __init__(self, name, price, quantity):
+#             self.name = name
+#             self.price = price
+#             self.quantity = quantity
+#     def total(self):
+#         return self.price * self.quantity
+#
+# apple = Order("apple", 5, 10)
+# # apple.price = -10
+# print(apple.total())
+
+# class Integer:
+#     @staticmethod
+#     def verify_coord(coord):
+#         if not isinstance(coord, int):
+#             raise TypeError(f"Координата {coord}должна быть целым числом")
+#
+#     def __set_name__(self, owner, name):
+#         self.name = '_' + name
+#
+#     def __get__(self, instance, owner):
+#         # return instance.__dict__[self.name]
+#         return getattr(instance, self.name)
+#
+#     def __set__(self, instance, value):
+#         self.verify_coord(value)
+#         # instance.__dict__[self.name] = value
+#         setattr(instance, self.name, value)
+# class Point3D:
+#     x = Integer()
+#     y = Integer()
+#     z = Integer()
+#
+#     def __init__(self, x, y, z):
+#         self.x = x
+#         self.y = y
+#         self.z = z
+#
+#
+#
+# p = Point3D(1, 2, 3)
+# print(p.__dict__)
+
+# class Rectangle:
+#     def __init__(self, w, h):
+#         self.w = w
+#         self.h = h
+#     def get_perimetr(self):
+#         return 2 * (self.w + self.h)
+# class Square:
+#     def __init__(self, a):
+#          self.a = a
+#     def get_perimetr(self):
+#         return 4 * self.a
+# class Triangle:
+#     def __init__(self, a, b, c):
+#         self.a = a
+#         self.b = b
+#         self.c = c
+#
+#     def get_perimetr(self):
+#         return self.a + self.b + self.c
+#
+# r1 = Rectangle(1, 2)
+# r2 = Rectangle(3, 4)
+# s1 = Square(10)
+# s2 = Square(20)
+# t1 = Triangle(1, 2, 3)
+# t2 = Triangle(4, 5, 6)
+# shape = [r1, r2, s1, s2, t1, t2]
+# for g in shape:
+#     print(g.get_perimetr())
+
+
+# from car import electrocar
+#
+#
+# def run():
+#     print("Hello")
+#     car1 = electrocar.ElectroCar('Tesla', 'T', 2018, 99000)
+#     car1.show_car()
+#     car1.description_battery()
+#
+# if __name__ == '__main__':
+#     run()
+
+
+
+
+
+
+
+
+
+
+
 
 
 
