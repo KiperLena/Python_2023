@@ -5267,17 +5267,94 @@ from abc import ABC, abstractmethod
 #         if not isinstance(other, Clock):
 #             raise ArithmeticError("Правый операнд должен быть типом Clock")
 #         return Clock(self.sec + other.sec)  # Clock(300)
+#     def __eq__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом Clock")
+#         return self.sec == other.sec
+#         # if self.sec == other.sec:
+#         #     return True
+#         # else:
+#         #     return False
 #
+#     def __gt__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом Clock")
+#         return self.sec > other.sec
 #
-# c1 = Clock(100)
+#     def __ge__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом Clock")
+#         return self.sec >= other.sec
+#     def __lt__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом Clock")
+#         return self.sec < other.sec
+#     def __le__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом Clock")
+#         return self.sec <= other.sec
+#
+# c1 = Clock(400)
 # c2 = Clock(200)
+
+
+# if c1 == c2:
+#     print("Время равно")
+# else:
+#     print("Время разное")
+
+# if c2 > c1:
+#     print("True")
+# else:
+#     print("False")
+# if c2 >= c1:
+#     print("True")
+# else:
+#     print("False")
+# if c2 < c1:
+#     print("True")
+# else:
+#     print("False")
+# if c2 <= c1:
+#     print("True")
+# else:
+#     print("False")
 # c4 = Clock(300)
-# # c3 = c1 + c2 + c4  # c3 = Clock(300)
+# c3 = c1 + c2 + c4  # c3 = Clock(300)
 # c2 += c1
 # print(c1.get_format_time())
 # print(c2.get_format_time())
 # print(c4.get_format_time())
 # print(c3.get_format_time())
+
+class Student:
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = list(marks)
+
+    def __getitem__(self, item):
+        if 0 <= item < len(self.marks):
+            return self.marks[item]
+        else:
+            # return "Неверный индекс"
+            raise IndexError("Неверный индекс")
+
+    def __setitem__(self, key, value):
+        self.marks[key] = value
+
+s1 = Student('Сергей', (5,5,2,4,3,5))
+# print(s1.marks[2])
+print(s1[2])
+s1[2] = 4
+print(s1[2])
+
+
+
+
+
+
+
+
 
 # class Human:
 #     def __init__(self, last_name, first_name, age):
