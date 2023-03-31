@@ -5327,26 +5327,26 @@ from abc import ABC, abstractmethod
 # print(c4.get_format_time())
 # print(c3.get_format_time())
 
-class Student:
-    def __init__(self, name, marks):
-        self.name = name
-        self.marks = list(marks)
-
-    def __getitem__(self, item):
-        if 0 <= item < len(self.marks):
-            return self.marks[item]
-        else:
-            # return "Неверный индекс"
-            raise IndexError("Неверный индекс")
-
-    def __setitem__(self, key, value):
-        self.marks[key] = value
-
-s1 = Student('Сергей', (5,5,2,4,3,5))
-# print(s1.marks[2])
-print(s1[2])
-s1[2] = 4
-print(s1[2])
+# class Student:
+#     def __init__(self, name, marks):
+#         self.name = name
+#         self.marks = list(marks)
+#
+#     def __getitem__(self, item):
+#         if 0 <= item < len(self.marks):
+#             return self.marks[item]
+#         else:
+#             # return "Неверный индекс"
+#             raise IndexError("Неверный индекс")
+#
+#     def __setitem__(self, key, value):
+#         self.marks[key] = value
+#
+# s1 = Student('Сергей', (5,5,2,4,3,5))
+# # print(s1.marks[2])
+# print(s1[2])
+# s1[2] = 4
+# print(s1[2])
 
 
 
@@ -5820,14 +5820,545 @@ print(s1[2])
 #     run()
 
 
+#Упаковка (сериализация)
+# распаковка данных (десериализация)
+
+# marshal (*.pyc)
+# pickle
+# json
+
+# pickle:
+
+# import pickle
+
+#Пример1:
+
+# file_name = 'basket.txt'
+# shop_list = {
+#     'фрукты': ['яблоки', 'манго'],
+#     'овощи': 'морковь',
+#     'бюджет': 1000
+# }
+#
+# with open(file_name, 'wb') as fh:
+#     pickle.dump(shop_list, fh)
+#
+# with open(file_name, 'rb') as fh:
+#     shop_list2 = pickle.load(fh)
+# print(shop_list2)
+
+
+#Пример2:
+
+# class Test:
+#     num = 35
+#     st = 'Привет'
+#     lst = [1, 2, 3]
+#     d = {'first': 'a', 'second': 2}
+#     tpl = (22, 63)
+#
+#     def __str__(self):
+#         return f"Число: {Test.num}\nСтрока: {Test.st}\nСписок: {Test.lst}\nСловарь: {Test.d}\nКортеж:{Test.tpl}"
+#
+#
+# obj = Test()
+#
+# my_obj = pickle.dumps(obj)
+# print(my_obj)
+#
+# my_obj2 = pickle.loads(my_obj)
+# print(my_obj2)
+
+
+# class Test2:
+#     def __init__(self):
+#         self.a = 35
+#         self.b = 'test'
+#         self.c = lambda x: x * x
+#
+#     def __str__(self):
+#         return f"{self.a} {self.b} {self.c(5)}"
+#
+#     def __getstate__(self):
+#         attr = self.__dict__.copy()
+#         del attr['c']
+#         return attr
+#
+#     def __setstate__(self, state):
+#         self.__dict__ = state
+#         self.c = lambda x: x * x
+#
+#
+# item1 = Test2()
+# item2 = pickle.dumps(item1)
+# item3 = pickle.loads(item2)
+# print(item3.__dict__)
+# print(item3)
+
+
+# JSON
+
+# import json
+
+# data = {
+#     'name': 'Olga',
+#     'age': 35,
+#     20: None,
+#     'True': 1,
+#     'hobbies': ('running', 'singing'),
+#     'children': [
+#         {
+#             'first_name': 'Alice',
+#             'age': 6
+#         }
+#     ]
+# }
+#  # пример
+# # with open('data.json', 'w') as fw:
+# #     json.dump(data, fw, indent=4)
+# #
+# # with open('data.json', 'r') as fw:
+# #     data1 = json.load(fw)
+# # print(data1)
+# # print(data1['name'])
+#
+# # пример
+# json_string = json.dumps(data, sort_keys=True)
+# print(json_string)
+# print(json_string[10:14])
+#
+# data2 = json.loads(json_string)
+# print(data2)
+# print(data2['name'])
+
+
+# x = {
+#     'name': 'Виктор'
+# }
+#
+# a = json.dumps(x)
+# print(a)
+# print(json.loads(a))
+#
+# print(json.dumps(x, ensure_ascii=False))
+
+import json
+from random import choice
+
+# def gen_person():
+#     name = ""
+#     tel = ""
+#
+#     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+#     nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+#
+#     while len(name) != 7:
+#         name += choice(letters)
+#     # print(name)
+#
+#     while len(tel) != 10:
+#         tel += choice(nums)
+#     # print(tel)
+#
+#     person = {
+#         'name': name,
+#         'tel': tel
+#     }
+#     return person
+#
+#
+# def write_json(person_dict):
+#     try:
+#         data = json.load(open('person.json'))
+#     except FileNotFoundError:
+#         data = []
+#     data.append(person_dict)
+#     with open('person.json', 'w') as f:
+#         json.dump(data, f, indent=2)
+#
+#
+# for i in range(5):
+#     write_json(gen_person())
+
+
+# class Student:
+#     def __init__(self, name, marks):
+#         self.name = name
+#         self.marks = marks
+#
+#     def __str__(self):
+#         a = ', '.join(map(str, self.marks))
+#         return f"Студент: {self.name}: {a}"
+#
+#     def add_marks(self, mark):
+#         self.marks.append(mark)
+#
+#     def delete_marks(self, index):
+#         self.marks.pop(index)
+#
+#     def edit_marks(self, index, new_marks):
+#         self.marks[index] = new_marks
+#
+#     def average_marks(self):
+#         return round(sum(self.marks)/len(self.marks), 2)
+#
+#     @staticmethod
+#     def dump_to_json(stud, file_name):
+#         try:
+#             data = json.load(open(file_name))
+#         except FileNotFoundError:
+#             data = []
+#
+#         data.append({'name': stud.name, 'marks': stud.marks})
+#         with open(file_name, 'w') as f:
+#             json.dump(data, f, indent=2)
+#
+#     @staticmethod
+#     def load_from_file(file_name):
+#         with open(file_name, 'r') as f:
+#             print(json.load(f))
+#
+#
+# class Group:
+#     def __init__(self, students, group):
+#         self.students = students
+#         self.group = group
+#
+#     def __str__(self):
+#         a = ''
+#         for i in self.students:
+#             a += str(i) + '\n'
+#         return f"Группа: {self.group}\n{a}"
+#
+#     def add_student(self, student):
+#         self.students.append(student)
+#
+#     def remove_student(self, index):
+#         return self.students.pop(index)
+#
+#     @staticmethod
+#     def change_group(group1, group2, index):
+#         return group2.add_student(group1.remove_student(index))
+#
+#     def dump_group(self, file):
+#         try:
+#             data = json.load(open(file))
+#         except FileNotFoundError:
+#             data = []
+#
+#         with open(file, 'w') as f:
+#             stud_list = []
+#             for i in self.students:
+#                 stud_list.append([i.name, i.marks])
+#             data.append(stud_list)
+#             json.dump(data, f, indent=2)
+#
+#     @staticmethod
+#     def upload_journal(file):
+#         with open(file) as f:
+#             print(json.load(f))
+#
+#
+# s1 = Student("Bodnya", [5, 4, 3, 4, 5, 3])
+# s2 = Student("Nikolaenko", [2, 3, 5, 4, 2])
+# s3 = Student("Birukov", [5, 5, 5, 5, 5, 3])
+# file1 = 'student.json'
+# file2 = 'group.json'
+# # Student.dump_to_json(s1, file1)
+# # Student.dump_to_json(s2, file1)
+# # Student.load_from_file(file1)
+# sts = [s1, s2]
+# my_group = Group(sts, 'ГК Python')
+# # my_group.dump_group(file2)
+# # print(my_group)
+# # my_group.add_student(s3)
+# # print(my_group)
+# # my_group.remove_student(1)
+# # print(my_group)
+# # print(s1)
+# # s1.add_marks(4)
+# # print(s1)
+# # s1.delete_marks(2)
+# # print(s1)
+# # s1.edit_marks(4, 5)
+# # print(s1)
+# # print("Средняя оценка:", s1.average_marks())
+#
+# group22 = [s3]
+# my_group2 = Group(group22, 'ГК Web')
+# my_group2.dump_group(file2)
+# Group.upload_journal(file2)
+# # print(my_group)
+# # print(my_group2)
+# # Group.change_group(my_group, my_group2, 0)
+# # print(my_group)
+# # print(my_group2)
+
+
+# pip install requests
+# pip install requests
+
+# import requests
+# import json
+
+# response = requests.get("https://jsonplaceholder.typicode.com/todos")
+# # print(type(response.text))
+# # print(response.text[:50])
+# todos = json.loads(response.text)
+# # print(todos)
+# # print(type(todos))
+#
+# todos_by_user = {}
+# for todo in todos:
+#     if todo['completed']:
+#         try:
+#             todos_by_user[todo['userId']] += 1
+#         except KeyError:
+#             todos_by_user[todo['userId']] = 1
+#
+# print(todos_by_user)
+#
+# top_users = sorted(todos_by_user.items(), key=lambda x: x[1], reverse=True)
+# print(top_users)
+#
+# max_complete = top_users[0][1]
+# print(max_complete)
+#
+# users = []
+# for user, num_complete in top_users:
+#     if num_complete < max_complete:
+#         break
+#     users.append(str(user))
+# print(users)
+#
+# max_users = " and ".join(users)
+# print(max_users)
+#
+# s = "s" if len(users) > 1 else ""
+# print(f"User{s} {max_users} completed {max_complete} TODOS")
+#
+# def keep(todo):
+#     is_complete = todo['completed']
+#     hax_max_count = str(todo['userId']) in users
+#     return is_complete and hax_max_count
+#
+# with open('filreted.json', 'w') as f:
+#     filtered_todos = list(filter(keep, todos))
+#     # print(filtered_todos)
+#     json.dump(filtered_todos, f, indent=2)
+#
+
+
+# CSV (Comma Separated Values)
+
+import csv
+
+# with open('data.csv') as f:
+#     file_reader = csv.reader(f, delimiter=";")
+#     count = 0
+#     for row in file_reader:
+#         if count == 0:
+#             print(f"Файл содержит столбцы: {', '.join(row)}")
+#         else:
+#             print(f"\t{row[0]} - {row[1]}. Родился в {row[2]} году ")
+#         count += 1
+#     print(f"Всего в файле {count} строки")
+
+
+# with open('data.csv') as f:
+#     file_names = ['Имя', 'Профессия', 'Год рождения']
+#     file_reader = csv.DictReader(f, delimiter=";", fieldnames=file_names)
+#     count = 0
+#     for row in file_reader:
+#         # print(row)
+#         if count == 0:
+#             print(f"Файл содержит столбцы: {', '.join(row)}")
+#         print(f"\t{row['Имя']} - {row['Профессия']}. {row['Год рождения']}")
+#         count += 1
+
+
+# with open('studnt.csv', 'w') as f:
+#     write = csv.writer(f, delimiter=";", lineterminator='\r')
+#     write.writerow(['Имя', 'Класс', 'Возраст'])
+#     write.writerow(['Женя', '9', '15'])
+#     write.writerow(['Саша', '5', '12'])
+#     write.writerow(['Маша', '11', '15'])
+
+
+# data = [['hostname', 'vendor', 'model', 'location'],
+#         ['sw1', 'Cisco', '3750', 'London, Best str'],
+#         ['sw2', 'Cisco', '3850', 'Liverpool, Better str'],
+#         ['sw3', 'Cisco', '3650', 'Liverpool, Better str'],
+#         ['sw4', 'Cisco', '3650', 'London, Best str']]
+#
+# with open('sw_data.csv', 'w') as f:
+#     writer = csv.writer(f, delimiter=";")
+#     # for row in data:
+#     #     writer.writerow(row)
+#     writer.writerows(data)
+#
+# with open('sw_data.csv', 'r') as f:
+#     print(f.read())
+
+# with open('stud_1.csv', 'w') as f:
+#     name = ['Имя', 'Возраст']
+#     file_writer = csv.DictWriter(f, delimiter=";", lineterminator='\r', fieldnames=name)
+#     file_writer.writeheader()
+#     file_writer.writerow({'Имя': 'Саша', 'Возраст': '16'})
+#     file_writer.writerow({'Имя': 'Маша', 'Возраст': '17'})
+#     file_writer.writerow({'Имя': 'Паша', 'Возраст': '20'})
+
+# data = [{
+#     'hostname': 'sw1',
+#     'location': 'London',
+#     'model': '3750',
+#     'vendor': 'Cisco'
+# }, {
+#     'hostname': 'sw2',
+#     'location': 'Liverpool',
+#     'model': '3850',
+#     'vendor': 'Cisco'
+# }, {
+#     'hostname': 'sw3',
+#     'location': 'Liverpool',
+#     'model': '3650',
+#     'vendor': 'Cisco'
+# }, {
+#     'hostname': 'sw4',
+#     'location': 'London',
+#     'model': '3650',
+#     'vendor': 'Cisco'
+# }]
+#
+# with open('dict_writer.csv', 'w') as f:
+#     writer = csv.DictWriter(f, delimiter=";", lineterminator='\r', fieldnames=list(data[0].keys()))
+#     writer.writeheader()
+#     for d in data:
+#         writer.writerow(d)
+
+
+# Парсинг данных с сайта
+
+# pip instal beatifulsoup4
+# bs4
+
+from bs4 import BeautifulSoup
+
+# f = open('index.html').read()
+# soup = BeautifulSoup(f, 'html.parser')
+# row = soup.find_all("div", class_="row")[2]
+# row = soup.find("div", class_="name")
+# row = soup.find_all("div", class_="row")[1].find("div", class_="links")
+# row = soup.find_all('div', {"data-set":"salary"})
+# row = soup.find('div', string="Alena").parent.parent
+# row = soup.find('div', string="Alena").find_parent(class_="row")
+# row = soup.find('div', id="whois3").find_next_sibling()
+# row = soup.find('div', id="whois3").find_previous_sibling()
+# print(row)
+
+
+# def get_copywriter(tag):
+#     whois = tag.find("div", class_="whois")
+#     if "Copywriter" in whois:
+#         return tag
+#     return None
+#
+#
+# f = open('index.html', encoding="utf-8").read()
+# soup = BeautifulSoup(f, 'html.parser')
+# copywriter = []
+# row = soup.find_all("div", class_="row")
+# for i in row:
+#     cw = get_copywriter(i)
+#     if cw:
+#         copywriter.append(cw)
+#
+# print(copywriter)
+
+
+# import re
+#
+#
+# def get_salary(s):
+#     pattern = r'\d+'
+#     res = re.findall(pattern, s)[0]
+#     # res = re.search(pattern, s)
+#     print(res)
+#
+#
+# f = open('index.html', encoding="utf-8").read()
+# soup = BeautifulSoup(f, 'html.parser')
+# row = soup.find_all('div', {"data-set":"salary"})
+# for i in row:
+#     get_salary(i.text)
+
+# import requests
+# from bs4 import BeautifulSoup
+#
+# # res = requests.get('https://ru.wordpress.org/')
+# # print(res.status_code)
+# # print(res.headers['Content-Type'])
+# # print(res.content)
+# # print(res.text)
+# # print(type(res.text))
+#
+# def get_html(url):
+#     res = requests.get(url)
+#     return  res.text
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "html.parser") # pip install lxml
+#     p1 = soup.find("header", id="masthead").find("p", class_="site-title").text
+#     return p1
+# def main():
+#     url = 'https://ru.wordpress.org/'
+#     print(get_data(get_html(url)))
+#
+#
+# if __name__ == '__main__':
+#     main()
 
 
 
-
-
-
-
-
+# import requests
+# from bs4 import BeautifulSoup
+# import re
+# import csv
+#
+#
+# def get_html(url):
+#     res = requests.get(url)
+#     return  res.text
+#
+# def refined(s):
+#     return re.sub(r"\D+", "", s)
+#
+#
+# def write_csv(data):
+#     with open('plagins.csv', 'a') as f:
+#         writer = csv.writer(f, delimiter=";", lineterminator='\r')
+#
+#         writer.writerow((data['name'], data['url'], data['rating']))
+# def get_data(html):
+#     soup = BeautifulSoup(html, "html.parser") # pip install lxml
+#     p1 = soup.find_all('section', class_='plugin-section')[1]
+#     plugins = p1.find_all('article')
+#
+#     for plugin in plugins:
+#         name = plugin.find('h3').text
+#         # url = plugin.find('h3').find("a").get('href')
+#         url = plugin.find('h3').find("a")['href']
+#         rating = plugin.find('span', class_='rating-count').find('a').text
+#         r = refined(rating)
+#         data = {'name': name, "url": url, "rating": r}
+#         write_csv(data)
+# def main():
+#     url = 'https://ru.wordpress.org/plugins/'
+#     get_data(get_html(url))
+#
+#
+# if __name__ == '__main__':
+#     main()
 
 
 
