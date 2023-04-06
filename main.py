@@ -6362,5 +6362,82 @@ from bs4 import BeautifulSoup
 
 
 
+# import requests
+# from bs4 import BeautifulSoup
+# import csv
+#
+#
+# def get_html(url):
+#     res = requests.get(url)
+#     return res.text
+#
+# def refine_cy(s):
+#     return s.split()[-1]
+#
+# def write_csv(data):
+#     with open('plagins1.csv', 'a', encoding="utf-8-sig") as f:
+#         writer = csv.writer(f, delimiter=";", lineterminator='\r')
+#         writer.writerow((data['name'], data['url'], data['snipet'], data['activ'], data['tests']))
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "html.parser") # pip install lxml
+#     element = soup.find_all('article', class_='plugin-card')
+#     for el in element:
+#         try:
+#             name = el.find('h3').text
+#         except ValueError:
+#             name = ''
+#
+#         try:
+#             url = el.find('h3').find('a').get('href')
+#         except ValueError:
+#             url = ''
+#
+#         try:
+#             snipet = el.find('div', class_='entry-excerpt').text.strip()
+#         except ValueError:
+#             snipet = ''
+#
+#         try:
+#             activ = el.find('span', class_='active-installs').text.strip()
+#         except ValueError:
+#             activ = ''
+#
+#         try:
+#             c = el.find('span', class_='tested-with').text.strip()
+#             cy = refine_cy(c)
+#         except ValueError:
+#             c = ''
+#
+#         data = {
+#             'name': name,
+#             'url': url,
+#             'snipet': snipet,
+#             'activ': activ,
+#             'tests': cy
+#         }
+#
+#         write_csv(data)
+#
+# def main():
+#     for i in range(1, 25):
+#         url = f'https://ru.wordpress.org/plugins/browse/blocks/page/{i}/'
+#         get_data(get_html(url))
+#
+# if __name__ == '__main__':
+#     main()
+
+from parse import Parser
+
+def main():
+    pars = Parser("https://www.ixbt.com/live/index/news/", "news.txt")
+    pars.run()
+
+if __name__ == '__main__':
+    main()
+
+
+
+
 
 

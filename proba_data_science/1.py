@@ -102,4 +102,32 @@ from collections import Counter
 # plt.show()
 
 
-# ПРИМЕР 8 Векторы
+# ПРИМЕР 8 статистика
+
+# num_friends = [100, 49, 41, 40, 25, 10, 100, 49, 41, 40, 25, 10, 2, 50, 55, 33, 21, 21, 21, 20, 98, 99, 98, 100]
+#
+# friend_count = Counter(num_friends)
+# xs = range(101) #максимум равен 101
+# ys = [friend_count[x] for x in xs] #высота - число друзей
+#
+# plt.bar(xs, ys)
+# plt.axis([0, 101, 0, 25])
+# plt.xlabel("Число друзей")
+# plt.ylabel("Число людей")
+# # plt.show()
+#
+# num_point = len(num_friends) #количество точек
+# largest_value = max(num_friends)
+# smallest_value = min(num_friends)
+# print(largest_value)
+# print(smallest_value)
+#
+# sorted_values = sorted(num_friends)
+# smallest_value = sorted_values[0]
+# second_smallest_value = sorted_values[1]
+# second_largest_value = sorted_values[-2]
+#
+# print(sorted_values)
+# print(smallest_value)
+# print(second_smallest_value)
+# print(second_largest_value)
