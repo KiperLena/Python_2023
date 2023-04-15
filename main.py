@@ -4750,7 +4750,6 @@ import time
 
 from abc import ABC, abstractmethod
 
-
 # class Chess(ABC):
 #     def draw(self):
 #         print("Нарисовал шахматную фигуру")
@@ -5349,13 +5348,6 @@ from abc import ABC, abstractmethod
 # print(s1[2])
 
 
-
-
-
-
-
-
-
 # class Human:
 #     def __init__(self, last_name, first_name, age):
 #         self.last_name = last_name
@@ -5602,7 +5594,6 @@ from abc import ABC, abstractmethod
 # print(mult(2, 2))
 
 
-
 # def dec(fn):
 #     def wrap(*args, **kwargs):
 #         print("*" * 20)
@@ -5686,7 +5677,6 @@ from abc import ABC, abstractmethod
 # p = Person("Игорь", "Петров")
 # p.name.set("Сергей")
 # print(p.name.get())
-
 
 
 # class ValidString:
@@ -5820,7 +5810,7 @@ from abc import ABC, abstractmethod
 #     run()
 
 
-#Упаковка (сериализация)
+# Упаковка (сериализация)
 # распаковка данных (десериализация)
 
 # marshal (*.pyc)
@@ -5831,7 +5821,7 @@ from abc import ABC, abstractmethod
 
 # import pickle
 
-#Пример1:
+# Пример1:
 
 # file_name = 'basket.txt'
 # shop_list = {
@@ -5848,7 +5838,7 @@ from abc import ABC, abstractmethod
 # print(shop_list2)
 
 
-#Пример2:
+# Пример2:
 
 # class Test:
 #     num = 35
@@ -6319,7 +6309,6 @@ from bs4 import BeautifulSoup
 #     main()
 
 
-
 # import requests
 # from bs4 import BeautifulSoup
 # import re
@@ -6359,7 +6348,6 @@ from bs4 import BeautifulSoup
 #
 # if __name__ == '__main__':
 #     main()
-
 
 
 # import requests
@@ -6437,7 +6425,7 @@ from bs4 import BeautifulSoup
 #     main()
 
 #   MVC
-#MVC — это шаблон программирования, который позволяет разделить логику приложения на три части:
+# MVC — это шаблон программирования, который позволяет разделить логику приложения на три части:
 
 # • Model (модель). Получает данные от контроллера, выполняет необходимые операции и передаёт их в вид.
 #
@@ -6512,10 +6500,8 @@ from bs4 import BeautifulSoup
 #     run()
 
 
-
-
-#СУБД(система управления базами данных)
-#SQL(язык структурированных запросов)
+# СУБД(система управления базами данных)
+# SQL(язык структурированных запросов)
 # *.db, *.sqlite,
 import sqlite3
 
@@ -6524,16 +6510,67 @@ import sqlite3
 #
 # con.close()
 
-with sqlite3.connect("profile.db") as con:
-    cur = con.cursor()
-    # cur.execute("""CREATE TABLE IF NOT EXISTS user(
-    # id INTEGER PRIMARY KEY AUTOINCREMENT,
-    # name TEXT NOT NULL,
-    # summa REAL,
-    # date TEXT
-    # )
+# with sqlite3.connect("profile.db") as con:
+#     cur = con.cursor()
+#     # cur.execute("""CREATE TABLE IF NOT EXISTS user(
+#     # id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     # name TEXT NOT NULL,
+#     # summa REAL,
+#     # date TEXT
+#     # )
+#     # """)
+#     cur.execute("DROP TABLE user")
+
+# with sqlite3.connect("users.db") as con:
+#     cur = con.cursor()
+
+#     cur.execute("""CREATE TABLE IF NOT EXISTS person(
+#     id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     name TEXT NOT NULL,
+#     phone BLOB NOT NULL DEFAULT "+79090000000",
+#     age INTEGER NOT NULL CHECK(age>0 AND age<100),
+#     email TEXT UNIQUE
+#     )""")
+#     cur.execute("""
+#     ALTER TABLE person
+#     RENAME TO person_table;
+#     """)
+
+    # cur.execute("""
+    # ALTER TABLE person_table
+    # ADD COLUMN address TEXT NOT NULL DEFAULT 'addr';
     # """)
-    cur.execute("DROP TABLE user")
+    # cur.execute("""
+    # ALTER TABLE person_table
+    # RENAME COLUMN address TO nome_address;
+    # """)
+
+    # cur.execute("""
+    # ALTER TABLE person_table
+    # DROP COLUMN nome_address;
+    # """)
+
+    # cur.execute("""
+    # DROP TABLE person_table;
+    # """)
 
 
 
+with sqlite3.connect("db_4.db") as con:
+    cur = con.cursor()
+    cur.execute("""
+    SELECT*
+    FROM Ware
+    ORDER BY Price DESC
+    LIMIT 2, 5;
+    """)
+
+
+    # res = cur.fetchall()
+    # print(res)
+    # for res in cur:
+    #     print(res)
+    # res = cur.fetchone()
+    # print(res)
+    # res2 = cur.fetchmany(2)
+    # print(res2)
