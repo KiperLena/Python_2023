@@ -6503,7 +6503,7 @@ from bs4 import BeautifulSoup
 # СУБД(система управления базами данных)
 # SQL(язык структурированных запросов)
 # *.db, *.sqlite,
-import sqlite3
+# import sqlite3
 
 # con = sqlite3.connect("profile.db")
 # cur = con.cursor()
@@ -6556,14 +6556,14 @@ import sqlite3
 
 
 
-with sqlite3.connect("db_4.db") as con:
-    cur = con.cursor()
-    cur.execute("""
-    SELECT*
-    FROM Ware
-    ORDER BY Price DESC
-    LIMIT 2, 5;
-    """)
+# with sqlite3.connect("db_4.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""
+#     SELECT*
+#     FROM Ware
+#     ORDER BY Price DESC
+#     LIMIT 2, 5;
+#     """)
 
 
     # res = cur.fetchall()
@@ -6574,3 +6574,70 @@ with sqlite3.connect("db_4.db") as con:
     # print(res)
     # res2 = cur.fetchmany(2)
     # print(res2)
+
+import sqlite3
+
+# cars = [
+#     ('Lada', 12000),
+#     ('Wolzwagen', 54000),
+#     ('Daewoo', 32000),
+#     ('Shkoda', 19000),
+#     ('Lamborgini', 102000)
+# ]
+#
+# with sqlite3.connect("cars.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS cars(
+#     car_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     model TEXT,
+#     price INTEGER
+#     )""")
+#
+#     cur.executescript("""
+#         DELETE FROM cars WHERE model LIKE 'D%';
+#         UPDATE cars SET price = price + 100;
+#     """)
+
+    # cur.execute("UPDATE cars SET price = :Price WHERE model LIKE 'D%'", {'Price': 0})
+
+    # cur.executemany("INSERT INTO cars VALUES(NULL, ?,?)", cars)
+
+    # cur.execute("INSERT INTO cars VALUES(1, 'Renault', 22000)")
+    # cur.execute("INSERT INTO cars VALUES(2, 'Volvo', 30000)")
+    # cur.execute("INSERT INTO cars VALUES(3, 'BMW', 50000)")
+    # cur.execute("INSERT INTO cars VALUES(4, 'Mercedec', 55000)")
+    # cur.execute("INSERT INTO cars VALUES(5, 'Audi', 62000)")
+
+    # for car in cars:
+    #     cur.execute("INSERT INTO cars VALUES(NULL, ?,?)", car)
+
+# con.commit()
+# con.close()
+
+
+con = None
+try:
+    con = sqlite3.connect("cars.db")
+    cur = con.cursor()
+    cur.executescript("""
+    CREATE TABLE IF NOT EXISTS cars(
+        car_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        model TEXT,
+        price INTEGER
+    );
+    BEGIN;
+    INSERT INTO cars VALUES(NULL, 'Renault', 22000);
+    UPDATE cars SET price = price + 100;
+    """)
+
+    con.commit()
+
+except sqlite3.Error as e:
+    if con:
+        con.rollback()
+    print("Ошибка выполнения запроса", e)
+finally:
+    if con:
+        con.close()
+
