@@ -6779,20 +6779,20 @@ from bs4 import BeautifulSoup
 
 import os
 
-from sqlalchemy import and_, or_, not_, desc, func, distinct, text
-
-from models.database import DATABASE_NAME, Session
-import create_database as db_creator
-
-from models.lesson import Lesson, association_table
-from models.student import Student
-from models.group import Group
-
-
-if __name__ == '__main__':
-    db_is_created = os.path.exists(DATABASE_NAME)
-    if not db_is_created:
-        db_creator.create_database()
+# from sqlalchemy import and_, or_, not_, desc, func, distinct, text
+#
+# from models.database import DATABASE_NAME, Session
+# import create_database as db_creator
+#
+# from models.lesson import Lesson, association_table
+# from models.student import Student
+# from models.group import Group
+#
+#
+# if __name__ == '__main__':
+#     db_is_created = os.path.exists(DATABASE_NAME)
+#     if not db_is_created:
+#         db_creator.create_database()
 
 
     # session = Session()
@@ -6966,21 +6966,161 @@ from jinja2 import Template
 # print(msg)
 
 
-car = [
-    {'model': 'Audi', 'price': 23000},
-    {'model': 'Skods', 'price': 15000},
-    {'model': 'Mersedes', 'price': 30000},
-    {'model': 'Lada', 'price': 44000}
-]
-
-lst = [1, 2, 3, 4, 5, 6]
-# tpl = "{{ cs | sum(attribute='price') }}"
-tpl = "{{ cs | sum() }}"
-tm = Template(tpl)
+# car = [
+#     {'model': 'Audi', 'price': 23000},
+#     {'model': 'Skods', 'price': 15000},
+#     {'model': 'Mersedes', 'price': 30000},
+#     {'model': 'Lada', 'price': 44000}
+# ]
+#
+# # lst = [1, 2, 3, 4, 5, 6]
+# # tpl = "{{ cs | sum(attribute='price') }}"
+# # tpl = "{{ (cs | max(attribute='price')).model }}"
+# # tpl = "{{ (cs | random }}"
+# tpl = "{{ (cs | replace('model', 'brand') }}"
+# # tpl = "{{ cs | sum() }}"
+# tm = Template(tpl)
 # msg = tm.render(cs=car)
-msg = tm.render(cs=lst)
+# # msg = tm.render(cs=lst)
+#
+# print(msg)
+
+
+# persons = [
+#     {'name': 'Aлексей', 'year': 18, 'weight': 78.5},
+#     {'name': 'Никита', 'year': 28, 'weight': 82.3},
+#     {'name': 'Виталий', 'year': 33, 'weight': 94.2}
+# ]
+#
+# tpl = """
+# {%-for u in users-%}
+# {% filter upper %}{{ u.name }}{% endfilter%}
+# {% endfor -%}
+# """
+#
+# tm = Template(tpl)
+# msg = tm.render(users=persons)
+#
+# print(msg)
+
+
+# html = '''
+# {% macro text_input(name, value='', type='text', size=40)%}
+# <input type="{{ type }}" name="{{ name}}" value="{{ value }}" size="{{size}}">
+# {% endmacro %}
+#
+# <p>{{ text_input('username') }}</p>
+# <p>{{ text_input('login') }}</p>
+# <p>{{ text_input('passwort', type='passwort') }}</p>
+#
+# '''
+#
+#
+# tm = Template(html)
+# msg = tm.render()
+#
+# print(msg)
+
+# html = """
+# {% macro text_input(name, placeholder, type='text') %}
+# <input type="{{ type }}" name="{{ name }}" placeholder="{{ placeholder }}">
+# {% endmacro %}
+#
+# <p>{{ text_input('firstname', 'Имя') }}</p>
+# <p>{{ text_input('lastname', 'Фамилия') }}</p>
+# <p>{{ text_input('address', 'Адрес') }}</p>
+# <p>{{ text_input('phone', 'Телефон', 'tel') }}</p>
+# <p>{{ text_input('email', 'Почта', 'email') }}</p>
+# """
+#
+# tm = Template(html)
+# msg = tm.render()
+#
+# print(msg)
+
+
+
+# persons = [
+#     {'name': 'Aлексей', 'year': 18, 'weight': 78.5},
+#     {'name': 'Никита', 'year': 28, 'weight': 82.3},
+#     {'name': 'Виталий', 'year': 33, 'weight': 94.2}
+# ]
+#
+# html = '''
+# {% macro list_users(list_of_user) -%}
+# <ul>
+# {% for u in list_of_user -%}
+# <li>{{ u.name}} {{ caller(u) }} </li>
+# {% endfor%}
+# </ul>
+# {% endmacro %}
+#
+# {% call(user) list_users(users) %}
+#     <ul>
+#         <li>age: {{user.year}}</li>
+#         <li>weight: {{user.weight}}</li>
+#     </ul>
+# {% endcall %}
+# '''
+#
+#
+# tm = Template(html)
+# msg = tm.render(users=persons)
+#
+# print(msg)
+
+from jinja2 import Environment, FileSystemLoader
+
+# persons = [
+#     {'name': 'Aлексей', 'year': 18, 'weight': 78.5},
+#     {'name': 'Никита', 'year': 28, 'weight': 82.3},
+#     {'name': 'Виталий', 'year': 33, 'weight': 94.2}
+# ]
+
+# subs = ['Политика', 'Наука', 'Культура','Спорт']
+#
+#
+# file_loader = FileSystemLoader('templates') #путь к нашему html документу
+# env = Environment(loader=file_loader) #экземпляр класса Enviroment
+#
+# tm = env.get_template('about.html')
+# msg = tm.render(list_table=subs)
+#
+# print(msg)
+
+from jinja2 import Environment, FileSystemLoader
+
+file_loader = FileSystemLoader('dz/templates')
+env = Environment(loader=file_loader)
+
+tm = env.get_template('one.html')
+msg = tm.render()
 
 print(msg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
