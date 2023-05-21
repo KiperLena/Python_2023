@@ -1,0 +1,25 @@
+body{
+    background: rgb(198, 198, 215);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.menu{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    background: rgb(201, 229, 131);
+    padding: 25px;
+    margin-top: 50px;
+}
+.content{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.cont{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif
+}
