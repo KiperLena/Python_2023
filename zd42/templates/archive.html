@@ -2,5 +2,26 @@
 
 {% block content %}
 {{ super() }}
- <h2>Архивные данные по скважинам</h2>
+
+<hr>
+
+<h3>Архивные данные по скважинам</h3>
+<ul>
+ {% for w in wells %}
+ <div class="arc">
+ <li>
+  <p class="field"><a href="{{ url_for('show_well', id_field=w.id) }}">{{ w.field }}</a></p>
+  <div class="anonce">{{ w.num }}</div>
+  <div class="anonce1">{{ w.text }}</div>
+  <div class="anonce2">{{ w.depth }}</div>
+ </li>
+ </div>
+ {% endfor %}
+</ul>
+
+<p> {{ field }}</p>
+<p> {{ num }} </p>
+<p>{{ text }}</p>
+<p>{{ depth}}</p>
+
 {% endblock %}

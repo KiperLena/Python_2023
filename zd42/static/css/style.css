@@ -23,3 +23,61 @@ body{
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif
 }
+.menu a{
+ font-weight: bold;
+}
+.arc{
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 3px solid rgb(167, 167, 223);
+    margin-left: 50px;
+    float: left; 
+}
+ul{
+    list-style: none;
+    padding: 0;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+p>a{
+    text-decoration: none;
+    padding: 0;
+    text-align: center;
+}
+
+li>p, li>div{
+    text-align: center;
+     width: 250px;
+
+}
+p.field{
+    margin: 0;
+    font-weight: bold;
+    background: rgb(216, 220, 150);
+}
+p.field a{
+    display: block;
+    padding: 10px 20px;
+}
+p.field:hover{
+background: orange;
+}
+.anonce{
+    margin-top: -1px;
+    background: #8ed8ef;
+    font-weight: bold;
+}
+.anonce1{
+    margin-top: -1px;
+    background: #FFF;
+}
+.anonce2{
+    margin-top: -1px;
+    background: #FFF;
+}
+
+p.text{
+    margin-left: 250px;
+    margin-right: 250px;
+    text-align:justify;
+}

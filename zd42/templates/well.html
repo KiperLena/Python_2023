@@ -2,5 +2,19 @@
 
 {% block content %}
 {{ super() }}
- <h2>Занесите информацию по новым скважинам</h2>
+
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{cat}}">{{ msg }}</div>
+{% endfor %}
+<hr>
+ <h3>Занесите информацию по новым скважинам</h3>
+
+<form action="{{ url_for('well') }}" method="post">
+   <p>Название месторождения: <input type="text" name="name" required></p>
+    <p>Номер скважины <input type="text" name="num" required></p>
+    <p>Описание скважины</p>
+    <p><textarea name="post" cols="40" rows="7"></textarea></p>
+    <p>Забой скважины <input type="text" name="depth" required></p>
+    <p><input type="submit" value="Добавить"></p>
+</form>
 {% endblock %}
