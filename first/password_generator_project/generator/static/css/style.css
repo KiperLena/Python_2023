@@ -1,0 +1,27 @@
+body{
+    background: lightyellow;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.container{
+    width: 400px;
+    margin: 0 auto;
+}
+.container h1{
+    text-align: center;
+
+}
+.container form, .container h2{
+    background: rgb(199, 165, 126);
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+.text h1{
+    text-align: center;
+}
+.text p{
+    background: rgb(195, 237, 133);
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
