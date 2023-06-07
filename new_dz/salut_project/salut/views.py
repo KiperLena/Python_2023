@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
+from django.contrib.auth.decorators import login_required #декоратор
 
 
 
@@ -27,11 +28,11 @@ def registeruser(request):
             return render(request, 'salut/registeruser.html', {'form': UserCreationForm(), 'error': 'Пароли не совпадают'})
 
 
-
+@login_required
 def curentsalut(request):
     return render(request, 'salut/curentsalut.html')
 
-
+@login_required
 def logoutuser(request):
     if request.method == 'POST':
         logout(request)
@@ -49,8 +50,13 @@ def loginuser(request):
             login(request, user)
             return redirect('curentsalut')
 
+@login_required
+def usasalut(request):
+    return render(request, 'salut/usasalut.html')
 
-
+@login_required
+def francesalut(request):
+    return render(request, 'salut/francesalut.html')
 
 
 

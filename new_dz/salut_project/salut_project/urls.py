@@ -24,4 +24,6 @@ urlpatterns = [
     path('logout/', views.logoutuser, name='logoutuser'),
     path('login/', views.loginuser, name='loginuser'),
     path('current/', views.curentsalut, name='curentsalut'),
+    path('usa/', views.usasalut, name='usasalut'),
+    path('france/', views.francesalut, name='francesalut'),
 ]
